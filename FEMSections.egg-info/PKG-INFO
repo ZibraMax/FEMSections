@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: FEMSections
-Version: 0.0.1
+Version: 1.0.0
 Summary: Paquete para elementos finitos en python
 Home-page: https://github.com/ZibraMax/FEMSections
 Author: Arturo Rodriguezh
