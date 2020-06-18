@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: FEMSections
-Version: 1.0.0
-Summary: Paquete para elementos finitos en python
+Version: 1.0.2
+Summary: Finite Element Method (FEM) in Python
 Home-page: https://github.com/ZibraMax/FEMSections
 Author: Arturo Rodriguezh
 Author-email: davidarturo9911@hotmail.com

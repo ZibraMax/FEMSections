@@ -225,3 +225,6 @@ class Elemento():
             y.append(this.Ty(z,n)[0])
             u.append(this.U(z,n))
         return x,y,u
+    def solucionEnPunto(this,x,y):
+        """Interpola la solucion en un punto dado por parametro. El punto debe estar en el dominio del elemento"""
+        

@@ -22,6 +22,19 @@ class integradorTriangular(Elemento):
         for i in range(len(X)):
             INT += f(X[i],Y[i])*W[i]
         return INT
+    def estaDentro(this,x,y):
+        """http://totologic.blogspot.com/2014/01/accurate-point-in-triangle-test.html"""
+        x1 = this.coords[0][0]
+        y1 = this.coords[0][1]
+        x2 = this.coords[1][0]
+        y2 = this.coords[1][1]
+        x3 = this.coords[2][0]
+        y3 = this.coords[2][1]
+        denominator = ((y2 - y3)*(x1 - x3) + (x3 - x2)*(y1 - y3))
+        a = ((y2 - y3)*(x - x3) + (x3 - x2)*(y - y3)) / denominator
+        b = ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / denominator;
+        c = 1 - a - b;
+        return 0 <= a and a <= 1 and 0 <= b and b <= 1 and 0 <= c and c <= 1;
 def meshDeFigura(corners,n=2,dev=False):
     corners = np.array(corners)
     triangle = tri.Triangulation(corners[:, 0], corners[:, 1])
