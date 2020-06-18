@@ -32,9 +32,11 @@ class integradorTriangular(Elemento):
         y3 = this.coords[2][1]
         denominator = ((y2 - y3)*(x1 - x3) + (x3 - x2)*(y1 - y3))
         a = ((y2 - y3)*(x - x3) + (x3 - x2)*(y - y3)) / denominator
-        b = ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / denominator;
-        c = 1 - a - b;
-        return 0 <= a and a <= 1 and 0 <= b and b <= 1 and 0 <= c and c <= 1;
+        b = ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / denominator
+        c = 1 - a - b
+        cero = 1*10**-7
+        uno = 1+cero
+        return -cero <= a and a <= uno and -cero <= b and b <= uno and -cero <= c and c <= uno
 def meshDeFigura(corners,n=2,dev=False):
     corners = np.array(corners)
     triangle = tri.Triangulation(corners[:, 0], corners[:, 1])

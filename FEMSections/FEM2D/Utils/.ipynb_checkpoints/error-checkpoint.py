@@ -1,9 +1,10 @@
-import FEMSections as FEM
-import FEMSections.FEM2D.Mesh as Mesh
+from .FEM1V import FEM1V
+from .. import Mesh
 import numpy as np
 import matplotlib.pyplot as plt
 import triangle as tri
 from .polygonal import generatePolygon
+
 def L1error(modeloL,modeloH):
     Ug = modeloH.U
     U = []
@@ -28,7 +29,7 @@ def problema(area,points,bcb=[0,1]):
     params = Mesh.delaunay._strdelaunay(constrained=True,delaunay=True,a=area)
     vertices = points
     geometria = Mesh.Delaunay1V(vertices, params)
-    zanahorias = FEM.FEM1V(geometria)
+    zanahorias = FEM1V(geometria)
     zanahorias.generarElementos()
 
     a11 = lambda x,y: 1

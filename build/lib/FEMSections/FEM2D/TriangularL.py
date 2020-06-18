@@ -19,7 +19,8 @@ class TriangularL(integradorTriangular):
                                                  [1/this.area2*(this.alpha[1]+this.beta[1]*x+this.gamma[1]*y)],
                                                  [1/this.area2*(this.alpha[2]+this.beta[2]*x+this.gamma[2]*y)]])
     def solucionInterpoladaLocal(this,x,y):
-        if this.estaDentro(x,y):
-            return (this.psisLocales(0.15,0.3).T@this.Ue)[0,0]
+        t = this.estaDentro(x,y)
+        if t:
+            return (this.psisLocales(x,y).T@this.Ue)[0,0]
         else:
             return False

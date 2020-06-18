@@ -1,5 +1,5 @@
-from .FEM1V import FEM1V
-from .. import Mesh
+import ..FEMSection as FEM
+import ..Mesh as Mesh
 import numpy as np
 import matplotlib.pyplot as plt
 import triangle as tri
@@ -29,7 +29,7 @@ def problema(area,points,bcb=[0,1]):
     params = Mesh.delaunay._strdelaunay(constrained=True,delaunay=True,a=area)
     vertices = points
     geometria = Mesh.Delaunay1V(vertices, params)
-    zanahorias = FEM1V(geometria)
+    zanahorias = FEM.FEM1V(geometria)
     zanahorias.generarElementos()
 
     a11 = lambda x,y: 1

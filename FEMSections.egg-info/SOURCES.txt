@@ -22,3 +22,6 @@ FEMSections/FEM2D/integradorRectangular.py
 FEMSections/FEM2D/integradorTriangular.py
 FEMSections/FEM2D/Mesh/__init__.py
 FEMSections/FEM2D/Mesh/delaunay.py
+FEMSections/FEM2D/Utils/__init__.py
+FEMSections/FEM2D/Utils/error.py
+FEMSections/FEM2D/Utils/polygonal.py

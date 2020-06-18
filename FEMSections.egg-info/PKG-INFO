@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: FEMSections
-Version: 1.0.2
+Version: 1.0.4
 Summary: Finite Element Method (FEM) in Python
 Home-page: https://github.com/ZibraMax/FEMSections
-Author: Arturo Rodriguezh
+Author: Arturo Rodriguez
 Author-email: davidarturo9911@hotmail.com
 License: UNKNOWN
 Description: # FEMSections

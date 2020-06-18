@@ -8,3 +8,6 @@ from .TriangularL import *
 from .Elasticidad import *
 from .FEM import *
 from .FEM1V import *
+
+def __main__():
+    print('Importando FEMSections')

@@ -38,6 +38,8 @@ class FEM:
             this.S[int(i[0])] = i[1]
     def solucionarSistemaEcuaciones(this):
         this.U = np.linalg.inv(this.K) @ this.S
+        for e in this.elementos:
+            e.Ue = this.U[np.ix_(e.gdl)]
     def solucionar(this,plot=True,figsize=[14,12],cmap='magma',markersize=2,linewidth=2,mask=None, **kargs):
         this.calcularMatrices(**kargs)
         print('Ensamblando sistema de ecuaciones')

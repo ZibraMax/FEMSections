@@ -8,6 +8,7 @@ from mpl_toolkits import mplot3d
 from matplotlib import tri
 import matplotlib as mpl
 from matplotlib.lines import Line2D
+from ..Utils import isBetween
 
 class Geometria:
     def __init__(this, vertices):
@@ -42,6 +43,23 @@ class Delaunay1V(Geometria):
         this.tipos = np.zeros([len(this.diccionarios)]).astype(str)
         this.tipos[:] = 'T1V'
         this.gdls = this.triangular['vertices'].tolist()
+    def darNodosCB(this,segmento):
+        a = []
+        ps=this.original['vertices'][this.original['segments'][segmento]].tolist()
+        for i,p in enumerate(this.triangular['vertices']):
+            if isBetween(ps[0], ps[1], p):
+                a.append(i)
+        return np.array(a)
+    def generarCB(this,bordes,valor=0):
+        cb = []
+        for segmento in bordes:
+            nodos = this.darNodosCB(segmento)
+            cbe = np.zeros([len(nodos),2])
+            cbe[:,0] = nodos
+            cbe[:,1] = valor
+            cb+= cbe.tolist()
+        return cb
+        
 def Imesh(tf,tw,a,b,params,plot=True):
     corners = [[0,0],[a,0],[a,tf],[a/2+tw/2,tf],[a/2+tw/2,tf+b],[a,tf+b],[a,2*tf+b],[0,2*tf+b],[0,tf+b],[a/2-tw/2,tf+b],[a/2-tw/2,tf],[0,tf]]
     seg = []
@@ -87,6 +105,13 @@ def generarGeometria(triang):
         if np.sum(np.isin(np.array(cbe)[:,0], i[1]))<1:
                 cbe.append([i[1],0])
         count+=1
-    diccionarios = triang['triangles'].tolist()
-    gdls = triang['vertices'].tolist()
+    g = Geometria([-1])
+    
+    g.triangular = triang
+    g.diccionarios = triang['triangles'].tolist()
+    g.gdls = triang['vertices'].tolist()
+    g.tipos = np.zeros([len(g.diccionarios)]).astype(str)
+    g.tipos[:] = 'T1V'
+        
+    return g
     

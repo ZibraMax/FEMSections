@@ -122,7 +122,7 @@ class Elemento():
         ax.set_ylabel(r'$\eta$')
         ax.set_zlabel(r'$|\mathcal{J}|$')
         ax.set_title('Determinante del Jacobiano de transformación')
-    def darSolucion(this,U,presc=20,graficar=False):
+    def darSolucion(this,U,graficar=False):
         X = np.array(this.coords)[:,0].tolist()
         X.append(this.coords[0][0])
         Y = np.array(this.coords)[:,1].tolist()
@@ -141,6 +141,37 @@ class Elemento():
             x.append(this.Tx(z,n)[0])
             y.append(this.Ty(z,n)[0])
             u.append(this.U(z,n)[0])
+        if graficar:
+            fig = plt.figure()
+            ax = fig.add_subplot(projection='3d')
+            surf = ax.plot_trisurf(x, y, u,cmap='magma')
+            surf._facecolors2d=surf._facecolors3d
+            surf._edgecolors2d=surf._edgecolors3d
+            cbar = fig.colorbar(surf)
+            ax.set_xlabel('x')
+            ax.set_ylabel('y')
+            ax.set_zlabel('u')
+            ax.set_title('Solucion interpolada en el elemento')
+        return x,y,u
+    def _darSolucion(this,U,graficar=False):
+        X = np.array(this.coords)[:,0].tolist()
+        X.append(this.coords[0][0])
+        Y = np.array(this.coords)[:,1].tolist()
+        Y.append(this.coords[0][1])
+        this._coordenadas = np.array([X,Y]).T
+        Ue = U[np.ix_(this.gdl)]
+        _Ue = Ue.T[0].tolist()
+        _Ue.append(Ue[0][0])
+        Z = this._dominioNaturalZ
+        N = this._dominioNaturalN
+        x = []
+        y = []
+        u = []
+        U = lambda z,n: Ue.T[0] @ this.psis(z,n)
+        for z,n in zip(Z,N):
+            x.append(this.Tx(z,n)[0])
+            y.append(this.Ty(z,n)[0])
+            u.append(U(z,n)[0])
         if graficar:
             fig = plt.figure()
             ax = fig.add_subplot(projection='3d')

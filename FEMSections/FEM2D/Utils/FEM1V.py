@@ -5,13 +5,13 @@ from matplotlib import tri
 import matplotlib as mpl
 mpl.style.use('default')
 
-from .FEM import *
-from .FEM import progressbar as progressbar
+from ..FEM import *
+from ..FEM import progressbar as progressbar
 
-from .SerendipityC import *
-from .CuadrilateroL import *
-from .TriangularC import *
-from .TriangularL import *
+from ..SerendipityC import *
+from ..CuadrilateroL import *
+from ..TriangularC import *
+from ..TriangularL import *
 
 class FEM1V(FEM):
     def __init__(this,geometria):
