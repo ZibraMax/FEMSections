@@ -1,6 +1,6 @@
 import math, random
 
-def generatePolygon( ctrX=10, ctrY=10, aveRadius=5, irregularity=0.5, spikeyness=0.5, numVerts=6 ) :
+def generatePolygon(ctrX=10, ctrY=10, aveRadius=5, irregularity=0.5, spikeyness=0.5, numVerts=6):
     irregularity = clip( irregularity, 0,1 ) * 2*math.pi / numVerts
     spikeyness = clip( spikeyness, 0,1 ) * aveRadius
 

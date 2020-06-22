@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="FEMSections",
-    version="1.0.4",
+    version="1.1.1",
     author="Arturo Rodriguez",
     author_email="davidarturo9911@hotmail.com",
     description="Finite Element Method (FEM) in Python",
